@@ -1,0 +1,111 @@
+public class doublyLinkedlist {
+    public static class Node{
+        Object data;
+        Node next;
+        Node prev;
+
+        Node(Object data){
+            this.data = data;
+            //next  = null;
+        }
+
+    }
+    Node head = null;
+    Node tail = null;
+    public void addend(Object e){
+        Node new_node = new Node(e);
+        if(head==null){
+            tail =  head = new_node;
+            head.prev = null;
+            tail.next = null;
+        }
+        else{
+            tail.next = new_node;
+            new_node.prev = tail;
+            tail = new_node;
+            tail.next = null;
+        }
+    }
+
+
+    public void addfront(Object e){
+        Node new_node = new Node(e);
+        if(head ==null){
+            tail = head = new_node;
+            head.prev = null;
+            tail.next = null;
+        }
+        else{
+            head.prev = new_node;
+            new_node.prev = null;
+            new_node.next = head;
+            head = new_node;
+        }
+    }
+
+
+    public void remove(Object e) {
+        Node temp = head;
+        while(temp.data != e && temp!=null){
+            temp = temp.next;
+        }
+        if(temp==null){
+            return;
+        }
+
+        if(temp.next ==null){
+            temp.prev.next = null;
+        }
+
+        Node n = temp.next;
+        Node p = temp.prev;
+        p.next = n;
+
+        Node np = temp.next;
+        Node pp = temp.prev;
+        np.prev = pp;}
+    
+
+        void display(){
+            Node temp = head;
+            while(temp!=null){
+                System.out.print(" " + temp.data);
+                temp = temp.next;
+            }
+            System.out.println(" NULL ");
+            System.out.println();
+        }
+
+
+        void printinreverse(){
+            Node temp  = tail;
+            while(tail!= null){
+                System.out.print(tail.data + " ");
+                tail = tail.prev;
+            }
+            if(tail==null){
+                System.out.println(" NULL ");
+            }
+        }
+
+    public static void main(String[] args) {
+    
+        doublyLinkedlist dl = new doublyLinkedlist();
+        dl.addend(22);
+        dl.addend(43);
+        dl.addend(72);
+        dl.display();
+        dl.printinreverse();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
