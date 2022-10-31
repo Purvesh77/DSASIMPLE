@@ -1,0 +1,52 @@
+public class circularLinkedList {
+
+    public static class Node{  
+        Object data;  
+        Node next;  
+        public Node(Object data) {  
+            this.data = data;  
+        }  
+    }  
+  
+    public Node head = null;  
+    public Node tail = null;  
+    
+    public void add(Object data){  
+    
+        Node newNode = new Node(data);   
+        if(head == null) {  
+             
+            head = newNode;  
+            tail = newNode;  
+            newNode.next = head;  
+        }  
+        
+        else {  
+            
+            tail.next = newNode;  
+        
+            tail = newNode;  
+         
+            tail.next = head;  
+        }  
+    }  
+    public void display() {  
+        Node current = head;  
+        if(head == null) {  
+            System.out.println("NULL");  
+        }  
+        else {  
+            System.out.println("circular linked list: "); 
+            System.out.print(" "+ current.data);  
+            current = current.next;  
+            while(current != head){ 
+            System.out.print(" " + current.data); 
+            current = current.next;} 
+            
+        }  
+    }
+}
+
+
+
+
